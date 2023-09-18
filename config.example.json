@@ -1,0 +1,34 @@
+{
+	"debug": true,
+	"server": {
+		"address": ":9090"
+	},
+	"context": {
+		"timeout": 2
+	},
+	"database": {
+		"host": "",
+		"port": "",
+		"user": "",
+		"pass": "",
+		"name": ""
+	},
+	"casbin_database": {
+		"name": "casbin"
+	},
+	"secret": {
+		"jwt": "",
+		"refresh_jwt": ""
+	},
+	"smtp": {
+		"host": "",
+		"port": 0,
+		"sender_name": "",
+		"email": "",
+		"password": ""
+	},
+	"google": {
+		"client_id": "",
+		"client_secret": ""
+	}
+}

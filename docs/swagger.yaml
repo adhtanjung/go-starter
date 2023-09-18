@@ -1,0 +1,119 @@
+basePath: /
+definitions:
+  domain.AuthRegister:
+    properties:
+      email:
+        type: string
+      gender:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  domain.AuthResponse:
+    properties:
+      email:
+        type: string
+      gender:
+        type: string
+      refresh_token:
+        type: string
+      status:
+        type: string
+      token:
+        type: string
+      username:
+        type: string
+    type: object
+  responses.Meta:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  responses.Response:
+    properties:
+      data: {}
+      meta:
+        $ref: '#/definitions/responses.Meta'
+    type: object
+host: localhost:9090
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a go starter api wow.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: go starter api
+  version: "1.0"
+paths:
+  /login:
+    post:
+      consumes:
+      - multipart/form-data
+      description: login
+      parameters:
+      - in: formData
+        name: password
+        required: true
+        type: string
+      - in: formData
+        name: username_or_email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.Response'
+      summary: login
+      tags:
+      - auth
+  /logout:
+    post:
+      description: logout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.Response'
+      summary: logout
+      tags:
+      - auth
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: register
+      parameters:
+      - description: Add account
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/domain.AuthRegister'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.AuthResponse'
+      summary: register new account
+      tags:
+      - auth
+swagger: "2.0"

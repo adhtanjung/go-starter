@@ -1,0 +1,14 @@
+
+vendor/
+article_clean
+_*
+*.test
+.DS_Store
+engine
+bin/
+go.sum
+
+.env
+config.json
+./public
+public/

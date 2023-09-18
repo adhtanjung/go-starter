@@ -1,0 +1,23 @@
+version: "2.3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: boilerplate_api
+    ports:
+      - 9090:9090
+    volumes:
+      - ./config.json:/app/config.json
+
+  postgresql:
+    image: postgres:latest
+    container_name: streamlize_db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=starter
+      - POSTGRES_USER=adhitanjung
+      - POSTGRES_PASSWORD=asdqwe123
+    volumes:
+      - ./starter.sql:/docker-entrypoint-initdb.d/init.sql
